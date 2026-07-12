@@ -1,0 +1,79 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum OfferType {
+  RENT
+  SALE
+}
+
+model Message {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String?
+  body      String
+  reference String? // property reference the enquiry is about, if any
+  locale    String   @default("fr")
+  read      Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model Property {
+  id             String    @id @default(cuid())
+  reference      String    @unique
+  offerType      OfferType
+  objectType     String // appartement | maison | terrain | locaux | parc
+  objectSubtype  String? // Attique, App. dernier étage, Duplex, Loft…
+
+  titleFr        String
+  titleEn        String
+  descriptionFr  String    @default("")
+  descriptionEn  String    @default("")
+
+  street         String?
+  hideStreet     Boolean   @default(false)
+  postalCode     String?
+  city           String
+  district       String? // quartier (Champel, Eaux-Vives…)
+  canton         String    @default("GE")
+  country        String    @default("Suisse")
+  lat            Float?
+  lng            Float?
+
+  rooms          Float? // pièces (2.5, 4.5…)
+  bedrooms       Int? // chambres
+  bathrooms      Int? // salles de bain
+  floor          Int? // étage
+  livingArea     Int? // surface habitable m²
+  usableArea     Int? // surface utile m²
+  volume         Int? // m³
+  ceilingHeight  Float? // hauteur de la pièce, m
+  yearBuilt      Int?
+  lastRenovation Int?
+
+  availability   String    @default("immediately") // immediately | by_agreement | date
+  availableFrom  DateTime?
+
+  price          Int?
+  priceOnRequest Boolean   @default(false)
+  currency       String    @default("CHF")
+  priceUnit      String    @default("month") // month | week | day (rent only)
+  chargesIncluded Boolean  @default(true)
+
+  features       String[]  @default([])
+  photos         String[]  @default([])
+
+  offMarket      Boolean   @default(false)
+  featured       Boolean   @default(false)
+  status         String    @default("active") // active | draft | archived
+
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+}

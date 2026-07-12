@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+/src/generated/prisma
+
+# Prisma generated client (regenerated on install/build)
+/src/generated
+
+# User-uploaded property photos
+/public/uploads

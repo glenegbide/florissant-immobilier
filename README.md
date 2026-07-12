@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Florissant Immobilier · International
 
-## Getting Started
+Luxury real-estate website for a Geneva agency. Bilingual (FR / EN), with a private
+admin dashboard for managing listings and reading enquiries.
 
-First, run the development server:
+**Stack:** Next.js 15 (App Router) · TypeScript · Tailwind CSS v4 · Prisma 7 · PostgreSQL.
+
+---
+
+## Run locally
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+cp .env.example .env        # then fill in the values
+npx prisma db push          # create the database tables
+npm run dev -- --port 3200  # http://localhost:3200
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Public site: `http://localhost:3200/fr` (English at `/en`)
+- Admin: `http://localhost:3200/admin` (log in with ADMIN_EMAIL / ADMIN_PASSWORD)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Show or change the admin password:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run password                 # show current
+npm run password -- NewPassword  # change it
+```
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy (recommended: Vercel + a managed Postgres)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. **Database** — create a managed PostgreSQL (Neon, Supabase or Railway) and copy its
+   connection string.
+2. **Push code to GitHub**, then import the repo in [vercel.com](https://vercel.com).
+3. **Environment variables** (Vercel → Project → Settings → Environment Variables) — set all of
+   the keys from `.env.example`:
+   - `DATABASE_URL` — the managed Postgres URL
+   - `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `AUTH_SECRET` (`openssl rand -hex 32`)
+   - `NEXT_PUBLIC_SITE_URL` — your final domain, e.g. `https://florissant-immobilier.ch`
+4. **Create the tables once** against the production DB:
+   ```bash
+   DATABASE_URL="<prod-url>" npx prisma db push
+   ```
+5. **Custom domain** — add it in Vercel → Domains and point your DNS as instructed.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+> Uploaded property photos are written to `public/uploads`. On Vercel's ephemeral filesystem this
+> is not persistent — for production image uploads, connect an object store (Vercel Blob or
+> Cloudflare R2). Text data (listings, messages) lives safely in Postgres.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Social links
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Edit `src/lib/site.ts` and paste your Instagram / Facebook / LinkedIn URLs — icons then appear
+in the footer automatically.

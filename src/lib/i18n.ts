@@ -1,0 +1,209 @@
+export const locales = ["fr", "en"] as const;
+export type Locale = (typeof locales)[number];
+
+export const defaultLocale: Locale = "fr";
+
+const dictionaries = {
+  fr: {
+    nav: {
+      buy: "Acheter",
+      rent: "Louer",
+      sell: "Vendre",
+      estimate: "Estimer",
+      prestige: "Prestige",
+      international: "International",
+      contact: "Contact",
+    },
+    hero: {
+      pretitle: "Florissant Immobilier · International",
+      title: "L'immobilier d'exception à Genève",
+      titleA: "L'immobilier ",
+      titleEm: "d'exception",
+      titleB: " à Genève",
+      subtitle:
+        "Vente, location et gestion de biens de prestige en Suisse romande et à l'international. Un accompagnement discret et sur mesure, à chaque étape.",
+      ctaBuy: "Découvrir nos biens",
+      ctaContact: "Nous contacter",
+    },
+    home: {
+      selection: "Notre sélection",
+      selectionSub: "Une collection de biens choisis avec exigence",
+      forSale: "À vendre",
+      forRent: "À louer",
+      viewAll: "Voir tous les biens",
+      services: "Nos services",
+      servicesTitle: "Un accompagnement sur mesure",
+      serviceSaleTitle: "Vente",
+      serviceSaleText:
+        "Valorisation, mise en marché discrète et négociation menée avec rigueur pour votre bien.",
+      serviceRentTitle: "Location",
+      serviceRentText:
+        "Recherche de locataires qualifiés et gestion locative complète, en toute sérénité.",
+      serviceIntlTitle: "International",
+      serviceIntlText:
+        "Un réseau international pour accompagner votre mobilité et vos investissements à l'étranger.",
+    },
+    listing: {
+      rooms: "pièces",
+      bedrooms: "ch.",
+      bathrooms: "sdb",
+      floor: "Étage",
+      livingArea: "Surface habitable",
+      usableArea: "Surface utile",
+      volume: "Volume",
+      ceilingHeight: "Hauteur de la pièce",
+      yearBuilt: "Année de construction",
+      lastRenovation: "Dernière rénovation",
+      availability: "Disponible",
+      immediately: "immédiatement",
+      by_agreement: "par consentement",
+      date: "dès le",
+      priceOnRequest: "Prix sur demande",
+      chargesIncluded: "Charges incluses",
+      chargesNotIncluded: "Charges non incluses",
+      perMonth: "/mois",
+      perWeek: "/semaine",
+      perDay: "/jour",
+      features: "Caractéristiques et équipements",
+      details: "Détails",
+      reference: "Référence",
+      contactUs: "Nous contacter",
+      offMarket: "Off market",
+      forSalePage: "Biens à vendre",
+      forRentPage: "Biens à louer",
+      noResults: "Aucun bien disponible pour le moment.",
+      backToList: "Retour aux biens",
+    },
+    footer: {
+      tagline: "L'immobilier d'exception à Genève et à l'international.",
+      quickLinks: "Navigation",
+      legal: "Mentions légales",
+      privacy: "Confidentialité",
+      contact: "Contact",
+      rights: "Tous droits réservés.",
+    },
+    contact: {
+      eyebrow: "Nous contacter",
+      title: "Parlons de votre projet",
+      intro:
+        "Vente, acquisition, location ou estimation : notre équipe vous répond avec discrétion et sur mesure.",
+      name: "Nom complet",
+      email: "E-mail",
+      phone: "Téléphone (facultatif)",
+      subject: "Sujet",
+      message: "Votre message",
+      send: "Envoyer",
+      sending: "Envoi…",
+      success: "Merci. Votre message a bien été envoyé — nous vous répondrons rapidement.",
+      error: "Une erreur est survenue. Merci de réessayer ou de nous écrire directement.",
+      aboutProperty: "Concernant le bien",
+      directTitle: "Coordonnées",
+    },
+  },
+  en: {
+    nav: {
+      buy: "Buy",
+      rent: "Rent",
+      sell: "Sell",
+      estimate: "Valuation",
+      prestige: "Prestige",
+      international: "International",
+      contact: "Contact",
+    },
+    hero: {
+      pretitle: "Florissant Immobilier · International",
+      title: "Exceptional real estate in Geneva",
+      titleA: "",
+      titleEm: "Exceptional",
+      titleB: " real estate in Geneva",
+      subtitle:
+        "Sales, rentals and management of prestige properties across French-speaking Switzerland and internationally. Discreet, tailored guidance at every step.",
+      ctaBuy: "Browse our properties",
+      ctaContact: "Contact us",
+    },
+    home: {
+      selection: "Our selection",
+      selectionSub: "A collection of properties chosen with the highest standards",
+      forSale: "For sale",
+      forRent: "For rent",
+      viewAll: "View all properties",
+      services: "Our services",
+      servicesTitle: "Guidance tailored to you",
+      serviceSaleTitle: "Sales",
+      serviceSaleText:
+        "Valuation, discreet marketing and rigorous negotiation for your property.",
+      serviceRentTitle: "Rentals",
+      serviceRentText:
+        "Qualified tenant search and complete rental management, with peace of mind.",
+      serviceIntlTitle: "International",
+      serviceIntlText:
+        "An international network to support your relocation and investments abroad.",
+    },
+    listing: {
+      rooms: "rooms",
+      bedrooms: "bed.",
+      bathrooms: "bath",
+      floor: "Floor",
+      livingArea: "Living area",
+      usableArea: "Usable area",
+      volume: "Volume",
+      ceilingHeight: "Ceiling height",
+      yearBuilt: "Year built",
+      lastRenovation: "Last renovation",
+      availability: "Available",
+      immediately: "immediately",
+      by_agreement: "by agreement",
+      date: "from",
+      priceOnRequest: "Price on request",
+      chargesIncluded: "Charges included",
+      chargesNotIncluded: "Charges not included",
+      perMonth: "/month",
+      perWeek: "/week",
+      perDay: "/day",
+      features: "Features & amenities",
+      details: "Details",
+      reference: "Reference",
+      contactUs: "Contact us",
+      offMarket: "Off market",
+      forSalePage: "Properties for sale",
+      forRentPage: "Properties for rent",
+      noResults: "No properties available at the moment.",
+      backToList: "Back to properties",
+    },
+    footer: {
+      tagline: "Exceptional real estate in Geneva and internationally.",
+      quickLinks: "Navigation",
+      legal: "Legal notice",
+      privacy: "Privacy",
+      contact: "Contact",
+      rights: "All rights reserved.",
+    },
+    contact: {
+      eyebrow: "Get in touch",
+      title: "Let's talk about your project",
+      intro:
+        "Sale, acquisition, rental or valuation — our team replies with discretion, tailored to you.",
+      name: "Full name",
+      email: "Email",
+      phone: "Phone (optional)",
+      subject: "Subject",
+      message: "Your message",
+      send: "Send",
+      sending: "Sending…",
+      success: "Thank you. Your message has been sent — we'll reply shortly.",
+      error: "Something went wrong. Please try again or email us directly.",
+      aboutProperty: "About property",
+      directTitle: "Contact details",
+    },
+  },
+} as const;
+
+export type Dict = (typeof dictionaries)["fr"];
+
+export function getDict(locale: string): Dict {
+  return (dictionaries as unknown as Record<string, Dict>)[locale] ?? dictionaries.fr;
+}
+
+export function isLocale(v: string): v is Locale {
+  return (locales as readonly string[]).includes(v);
+}

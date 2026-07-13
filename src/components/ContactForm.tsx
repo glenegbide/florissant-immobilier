@@ -26,10 +26,12 @@ export function ContactForm({
   t,
   locale,
   reference,
+  defaultSubject,
 }: {
   t: Dict;
   locale: string;
   reference?: string;
+  defaultSubject?: string;
 }) {
   const [state, formAction] = useActionState<ContactState, FormData>(sendMessage, {
     ok: false,
@@ -86,7 +88,7 @@ export function ContactForm({
         </div>
         <div>
           <label className={labelCls}>{t.contact.subject}</label>
-          <input name="subject" className={inputCls} />
+          <input name="subject" defaultValue={defaultSubject} className={inputCls} />
         </div>
       </div>
 

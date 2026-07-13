@@ -89,6 +89,53 @@ export default async function HomePage({
         </div>
       </section>
 
+      {/* ── La Maison — editorial statement ── */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+        <div className="grid gap-12 lg:grid-cols-[1.15fr_1fr] lg:items-center">
+          <Reveal>
+            <p className="eyebrow">{t.home.maisonEyebrow}</p>
+            <h2 className="mt-5 font-display text-3xl leading-[1.12] text-ink lg:text-[2.6rem]">
+              {t.home.maisonTitleA}
+              <br />
+              <em className="text-bordeaux">{t.home.maisonTitleEm}</em>
+            </h2>
+            <p className="mt-6 max-w-lg text-[1.02rem] font-light leading-relaxed text-mutedbrand">
+              {t.home.maisonText}
+            </p>
+            <ul className="mt-8 space-y-3.5">
+              {t.home.maisonPoints.map((point) => (
+                <li
+                  key={point}
+                  className="flex items-start gap-4 text-[0.95rem] font-light text-ink/85"
+                >
+                  <span className="mt-2.5 h-px w-6 shrink-0 bg-bordeaux" />
+                  {point}
+                </li>
+              ))}
+            </ul>
+            <Link
+              href={`/${locale}/contact`}
+              className="arrow-link mt-10 inline-block border border-bordeaux px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-bordeaux transition-colors hover:bg-bordeaux hover:text-white"
+            >
+              {t.home.maisonCta} <span className="arrow ml-1">→</span>
+            </Link>
+          </Reveal>
+
+          <Reveal delay={150} className="relative">
+            <div className="pointer-events-none absolute -bottom-3 -right-3 hidden h-full w-full border border-bordeaux/25 lg:block" />
+            <div className="relative aspect-[4/5] overflow-hidden bg-stone">
+              <Image
+                src="/photos/courtyard_historic.jpg"
+                alt=""
+                fill
+                sizes="(min-width: 1024px) 44vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ── Selection (only when properties exist) ── */}
       {featured.length > 0 && (
         <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-18 lg:py-24">

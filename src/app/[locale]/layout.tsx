@@ -38,8 +38,30 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
   const t = getDict(locale);
 
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissant-immobilier.ch";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    name: "Florissant Immobilier · International",
+    url: siteUrl,
+    logo: `${siteUrl}/logo/icon.svg`,
+    image: `${siteUrl}/photos/hero_roses.jpg`,
+    email: "info@florissant-immobilier.ch",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Genève",
+      addressCountry: "CH",
+    },
+    areaServed: ["Genève", "Suisse romande", "International"],
+    knowsLanguage: ["fr", "en"],
+  };
+
   return (
     <div className="flex min-h-screen flex-col">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header locale={locale} t={t} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} t={t} />

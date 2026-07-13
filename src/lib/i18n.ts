@@ -42,6 +42,17 @@ const dictionaries = {
       serviceIntlTitle: "International",
       serviceIntlText:
         "Un réseau international pour accompagner votre mobilité et vos investissements à l'étranger.",
+      maisonEyebrow: "La Maison",
+      maisonTitleA: "Une maison genevoise,",
+      maisonTitleEm: "une exigence internationale.",
+      maisonText:
+        "Florissant Immobilier accompagne une clientèle privée dans la vente, l'acquisition et la location de biens d'exception. Peu de mandats, beaucoup d'attention : chaque bien est préparé, présenté et négocié comme s'il était le nôtre.",
+      maisonPoints: [
+        "Sélection restreinte de biens, jamais de volume",
+        "Discrétion absolue — mandats off market sur demande",
+        "Un seul interlocuteur, du premier échange à la remise des clés",
+      ],
+      maisonCta: "Rencontrons-nous",
     },
     listing: {
       rooms: "pièces",
@@ -138,6 +149,17 @@ const dictionaries = {
       serviceIntlTitle: "International",
       serviceIntlText:
         "An international network to support your relocation and investments abroad.",
+      maisonEyebrow: "The Maison",
+      maisonTitleA: "A Geneva maison,",
+      maisonTitleEm: "an international standard.",
+      maisonText:
+        "Florissant Immobilier advises private clients on the sale, acquisition and rental of exceptional properties. Few mandates, full attention: every property is prepared, presented and negotiated as if it were our own.",
+      maisonPoints: [
+        "A restrained selection of properties — never volume",
+        "Absolute discretion — off-market mandates on request",
+        "One dedicated contact, from first exchange to key handover",
+      ],
+      maisonCta: "Let's meet",
     },
     listing: {
       rooms: "rooms",

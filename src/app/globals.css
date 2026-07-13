@@ -39,6 +39,31 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Brand text selection */
+::selection {
+  background: var(--bordeaux);
+  color: #fff;
+}
+
+/* Visible, elegant keyboard focus — accessibility that reads as craft */
+:focus-visible {
+  outline: 2px solid var(--bordeaux);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { notFound } from "next/navigation";
 import { prisma } from "@/lib/prisma";
 import { getDict } from "@/lib/i18n";
 import { priceLabel } from "@/lib/format";
 import { Reveal } from "@/components/Reveal";
+import { PhotoGallery } from "@/components/PhotoGallery";
 
 export async function generateMetadata({
   params,
@@ -90,27 +90,13 @@ export default async function PropertyPage({
         <span className="arrow inline-block rotate-180">→</span> {t.listing.backToList}
       </Link>
 
-      {/* Gallery */}
-      <div className="mt-7 grid gap-3 lg:grid-cols-[2fr_1fr]">
-        <div className="relative aspect-[16/10] overflow-hidden bg-stone hero-curtain">
-          {p.photos[0] && (
-            <Image
-              src={p.photos[0]}
-              alt={title}
-              fill
-              priority
-              sizes="(min-width: 1024px) 66vw, 100vw"
-              className="hero-zoom object-cover"
-            />
-          )}
-        </div>
-        <div className="hidden lg:grid grid-rows-2 gap-3">
-          {p.photos.slice(1, 3).map((src) => (
-            <div key={src} className="relative overflow-hidden bg-stone">
-              <Image src={src} alt="" fill sizes="33vw" className="object-cover" />
-            </div>
-          ))}
-        </div>
+      {/* Gallery with lightbox */}
+      <div className="mt-7">
+        <PhotoGallery
+          photos={p.photos}
+          title={title}
+          allLabel={locale === "en" ? "All photos" : "Toutes les photos"}
+        />
       </div>
 
       <div className="mt-12 grid gap-14 lg:grid-cols-[1fr_360px]">

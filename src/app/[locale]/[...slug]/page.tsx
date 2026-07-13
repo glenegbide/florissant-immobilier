@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { getDict } from "@/lib/i18n";
 
 const titles: Record<string, { fr: string; en: string; sub: { fr: string; en: string } }> = {
@@ -45,6 +46,7 @@ export default async function GenericPage({
   const t = getDict(locale);
   const key = slug[0];
   const entry = titles[key];
+  if (!entry) notFound();
   const lang = locale === "en" ? "en" : "fr";
 
   return (

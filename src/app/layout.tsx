@@ -15,40 +15,45 @@ const geist = Geist({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissant-immobilier.ch";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissantimmobilier.ch";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Florissant Immobilier · International — L'immobilier d'exception à Genève",
+    default:
+      "Florissant Immobilier International — L'immobilier suisse, avec une vision internationale",
     template: "%s · Florissant Immobilier",
   },
   description:
-    "Agence immobilière de prestige à Genève. Vente, location, gestion et estimation de biens d'exception en Suisse romande et à l'international.",
+    "Agence immobilière suisse : vente, location, estimation et relocation à Genève, Nyon, Gland, Rolle, Lausanne et dans toute la Suisse romande.",
   keywords: [
     "immobilier Genève",
-    "agence immobilière Genève",
-    "immobilier de prestige",
+    "immobilier Vaud",
+    "immobilier Nyon",
+    "immobilier Lausanne",
+    "agence immobilière Suisse romande",
     "vente appartement Genève",
     "location Genève",
     "estimation immobilière",
-    "luxury real estate Geneva",
+    "relocation Suisse",
+    "real estate Geneva",
+    "real estate Vaud",
   ],
-  authors: [{ name: "Florissant Immobilier" }],
+  authors: [{ name: "Florissant Immobilier International" }],
   openGraph: {
     type: "website",
-    siteName: "Florissant Immobilier · International",
-    title: "Florissant Immobilier · International",
+    siteName: "Florissant Immobilier International",
+    title: "Florissant Immobilier International",
     description:
-      "L'immobilier d'exception à Genève — vente, location et gestion de biens de prestige.",
+      "L'immobilier suisse, avec une vision internationale — vente, location, estimation et relocation en Suisse romande.",
     locale: "fr_CH",
     alternateLocale: "en_US",
     images: [{ url: "/photos/hero_roses.jpg", width: 1200, height: 630 }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Florissant Immobilier · International",
-    description: "L'immobilier d'exception à Genève.",
+    title: "Florissant Immobilier International",
+    description: "L'immobilier suisse, avec une vision internationale.",
     images: ["/photos/hero_roses.jpg"],
   },
   alternates: {

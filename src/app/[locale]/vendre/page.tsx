@@ -14,8 +14,8 @@ export async function generateMetadata({
   return {
     title: en ? "Sell your property" : "Vendre votre bien",
     description: en
-      ? "Entrust the sale of your Geneva property to a discreet maison: precise valuation, tailored marketing, rigorous negotiation."
-      : "Confiez la vente de votre bien à une maison discrète : estimation précise, mise en marché sur mesure, négociation rigoureuse.",
+      ? "Entrust the sale of your property in Geneva or Vaud to a discreet agency: precise valuation, tailored marketing, rigorous negotiation."
+      : "Confiez la vente de votre bien à Genève ou dans le canton de Vaud à une maison discrète : estimation précise, mise en marché sur mesure, négociation rigoureuse.",
   };
 }
 

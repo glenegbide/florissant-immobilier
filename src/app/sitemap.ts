@@ -1,29 +1,37 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { pageSlugs, type PageKey } from "@/lib/routes";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissant-immobilier.ch";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissantimmobilier.ch";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const staticPaths = [
-    "",
-    "/acheter",
-    "/louer",
-    "/vendre",
-    "/estimer",
-    "/prestige",
-    "/contact",
-    "/mentions-legales",
-    "/confidentialite",
+  const pages: PageKey[] = [
+    "buy",
+    "rent",
+    "sell",
+    "estimate",
+    "relocation",
+    "properties",
+    "about",
+    "contact",
+    "legal",
+    "privacy",
   ];
 
   const entries: MetadataRoute.Sitemap = [];
-  for (const locale of ["fr", "en"]) {
-    for (const path of staticPaths) {
+  for (const locale of ["fr", "en"] as const) {
+    entries.push({
+      url: `${siteUrl}/${locale}`,
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 1,
+    });
+    for (const key of pages) {
       entries.push({
-        url: `${siteUrl}/${locale}${path}`,
+        url: `${siteUrl}/${locale}/${pageSlugs[key][locale]}`,
         lastModified: new Date(),
-        changeFrequency: path === "" ? "daily" : "weekly",
-        priority: path === "" ? 1 : 0.7,
+        changeFrequency: "weekly",
+        priority: 0.7,
       });
     }
   }

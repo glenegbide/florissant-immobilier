@@ -1,15 +1,18 @@
 import Link from "next/link";
 import { Wordmark } from "./Wordmark";
 import { MobileMenu } from "./MobileMenu";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { localePath } from "@/lib/routes";
 import type { Dict } from "@/lib/i18n";
 
 export function Header({ locale, t }: { locale: string; t: Dict }) {
   const nav = [
-    { href: `/${locale}/acheter`, label: t.nav.buy },
-    { href: `/${locale}/louer`, label: t.nav.rent },
-    { href: `/${locale}/vendre`, label: t.nav.sell },
-    { href: `/${locale}/estimer`, label: t.nav.estimate },
-    { href: `/${locale}/prestige`, label: t.nav.prestige },
+    { href: localePath(locale, "buy"), label: t.nav.buy },
+    { href: localePath(locale, "rent"), label: t.nav.rent },
+    { href: localePath(locale, "sell"), label: t.nav.sell },
+    { href: localePath(locale, "estimate"), label: t.nav.estimate },
+    { href: localePath(locale, "relocation"), label: t.nav.relocation },
+    { href: localePath(locale, "about"), label: t.nav.about },
   ];
 
   return (
@@ -18,7 +21,7 @@ export function Header({ locale, t }: { locale: string; t: Dict }) {
         <div className="flex h-20 items-center justify-between gap-6">
           <Wordmark locale={locale} />
 
-          <nav className="hidden lg:flex items-center gap-8 text-[0.9rem] text-ink">
+          <nav className="hidden lg:flex items-center gap-7 text-[0.9rem] text-ink">
             {nav.map((item) => (
               <Link
                 key={item.href}
@@ -32,37 +35,18 @@ export function Header({ locale, t }: { locale: string; t: Dict }) {
 
           <div className="flex items-center gap-5">
             <Link
-              href={`/${locale}/contact`}
+              href={localePath(locale, "contact")}
               className="hidden sm:inline-block border border-line px-5 py-2.5 text-[0.75rem] uppercase tracking-[0.2em] text-ink transition-colors hover:border-bordeaux hover:text-bordeaux"
             >
               {t.nav.contact}
             </Link>
-            <div className="hidden sm:flex items-center gap-2 text-[0.82rem]">
-              <Link
-                href="/fr"
-                className={
-                  locale === "fr"
-                    ? "text-bordeaux"
-                    : "text-mutedbrand transition-colors hover:text-bordeaux"
-                }
-              >
-                FR
-              </Link>
-              <span className="text-line">|</span>
-              <Link
-                href="/en"
-                className={
-                  locale === "en"
-                    ? "text-bordeaux"
-                    : "text-mutedbrand transition-colors hover:text-bordeaux"
-                }
-              >
-                EN
-              </Link>
-            </div>
+            <LanguageSwitcher
+              locale={locale}
+              className="hidden sm:flex text-[0.82rem]"
+            />
             <MobileMenu
               items={nav}
-              contactHref={`/${locale}/contact`}
+              contactHref={localePath(locale, "contact")}
               contactLabel={t.nav.contact}
               locale={locale}
             />

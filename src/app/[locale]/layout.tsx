@@ -17,8 +17,8 @@ export async function generateMetadata({
   const isEn = locale === "en";
   return {
     title: isEn
-      ? "Exceptional real estate in Geneva"
-      : "L'immobilier d'exception à Genève",
+      ? "Swiss real estate with an international perspective"
+      : "L'immobilier suisse, avec une vision internationale",
     alternates: {
       canonical: `/${isEn ? "en" : "fr"}`,
       languages: { fr: "/fr", en: "/en" },
@@ -38,21 +38,30 @@ export default async function LocaleLayout({
   if (!isLocale(locale)) notFound();
   const t = getDict(locale);
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissant-immobilier.ch";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissantimmobilier.ch";
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    name: "Florissant Immobilier · International",
+    name: "Florissant Immobilier International",
     url: siteUrl,
     logo: `${siteUrl}/logo/icon.svg`,
     image: `${siteUrl}/photos/hero_roses.jpg`,
-    email: "info@florissant-immobilier.ch",
+    email: "info@florissantimmobilier.ch",
+    telephone: "+41 76 452 10 91",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Genève",
       addressCountry: "CH",
     },
-    areaServed: ["Genève", "Suisse romande", "International"],
+    areaServed: [
+      "Genève",
+      "Nyon",
+      "Gland",
+      "Rolle",
+      "Lausanne",
+      "Canton de Vaud",
+      "Suisse romande",
+    ],
     knowsLanguage: ["fr", "en"],
   };
 

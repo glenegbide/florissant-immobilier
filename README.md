@@ -37,7 +37,7 @@ npm run password -- NewPassword  # change it
    the keys from `.env.example`:
    - `DATABASE_URL` — the managed Postgres URL
    - `ADMIN_EMAIL`, `ADMIN_PASSWORD`, `AUTH_SECRET` (`openssl rand -hex 32`)
-   - `NEXT_PUBLIC_SITE_URL` — your final domain, e.g. `https://florissant-immobilier.ch`
+   - `NEXT_PUBLIC_SITE_URL` — your final domain, e.g. `https://florissantimmobilier.ch`
 4. **Create the tables once** against the production DB:
    ```bash
    DATABASE_URL="<prod-url>" npx prisma db push

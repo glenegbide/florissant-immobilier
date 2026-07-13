@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 type Item = { href: string; label: string };
 
@@ -75,23 +76,11 @@ export function MobileMenu({
           >
             {contactLabel}
           </Link>
-          <div className="flex items-center gap-3 text-sm">
-            <Link
-              href="/fr"
-              onClick={() => setOpen(false)}
-              className={locale === "fr" ? "text-bordeaux" : "text-mutedbrand"}
-            >
-              FR
-            </Link>
-            <span className="text-line">|</span>
-            <Link
-              href="/en"
-              onClick={() => setOpen(false)}
-              className={locale === "en" ? "text-bordeaux" : "text-mutedbrand"}
-            >
-              EN
-            </Link>
-          </div>
+          <LanguageSwitcher
+            locale={locale}
+            className="gap-3 text-sm"
+            onNavigate={() => setOpen(false)}
+          />
         </div>
       </div>
     </div>

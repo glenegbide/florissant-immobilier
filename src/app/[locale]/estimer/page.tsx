@@ -13,8 +13,8 @@ export async function generateMetadata({
   return {
     title: en ? "Property valuation" : "Estimation de votre bien",
     description: en
-      ? "Request a confidential, documented valuation of your Geneva property."
-      : "Demandez une estimation confidentielle et documentée de votre bien à Genève.",
+      ? "Request a confidential, documented valuation of your property in Geneva, Vaud or French-speaking Switzerland."
+      : "Demandez une estimation confidentielle et documentée de votre bien à Genève, dans le canton de Vaud ou en Suisse romande.",
   };
 }
 

@@ -56,17 +56,26 @@ export default async function ContactPage({
                 {site.email}
               </a>
             </li>
-            {site.phone && (
-              <li>
-                <span className="block text-mutedbrand">{t.contact.phone}</span>
-                <a
-                  href={`tel:${site.phone.replace(/\s/g, "")}`}
-                  className="link-underline text-ink transition-colors hover:text-bordeaux"
-                >
-                  {site.phone}
-                </a>
-              </li>
-            )}
+            <li>
+              <span className="block text-mutedbrand">{t.contact.phone}</span>
+              <a
+                href={`tel:${site.phone.replace(/\s/g, "")}`}
+                className="link-underline text-ink transition-colors hover:text-bordeaux"
+              >
+                {site.phone}
+              </a>
+            </li>
+            <li>
+              <span className="block text-mutedbrand">{t.contact.whatsapp}</span>
+              <a
+                href={`https://wa.me/${site.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline text-ink transition-colors hover:text-bordeaux"
+              >
+                {site.phone}
+              </a>
+            </li>
             <li>
               <span className="block text-mutedbrand">Adresse</span>
               <span className="text-ink">{site.city}</span>

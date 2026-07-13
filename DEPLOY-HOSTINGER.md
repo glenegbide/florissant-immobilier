@@ -6,7 +6,7 @@ You only run a few commands once.
 ## What you need
 - A **Hostinger VPS** (any plan). In hPanel, choose the **Ubuntu 24.04 with Docker** template
   (or install Docker on a plain Ubuntu — see step 1).
-- Your **domain** (e.g. `florissant-immobilier.ch`) with its DNS **A record pointing to the VPS IP**
+- Your **domain** (e.g. `florissantimmobilier.ch`) with its DNS **A record pointing to the VPS IP**
   (set this in your domain's DNS; give it a few minutes to propagate).
 
 ## 1. Connect and install Docker (skip if you picked the Docker template)

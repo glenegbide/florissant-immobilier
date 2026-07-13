@@ -8,15 +8,20 @@ export async function ListingPage({
   offerType,
 }: {
   locale: string;
-  offerType: "RENT" | "SALE";
+  offerType?: "RENT" | "SALE";
 }) {
   const t = getDict(locale);
   const properties = await prisma.property.findMany({
-    where: { status: "active", offerType },
+    where: { status: "active", ...(offerType ? { offerType } : {}) },
     orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
   });
 
-  const title = offerType === "SALE" ? t.listing.forSalePage : t.listing.forRentPage;
+  const title =
+    offerType === "SALE"
+      ? t.listing.forSalePage
+      : offerType === "RENT"
+        ? t.listing.forRentPage
+        : t.listing.allPage;
 
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
@@ -26,13 +31,7 @@ export async function ListingPage({
           <h1 className="font-display text-4xl text-ink lg:text-[3rem]">{title}</h1>
           <span className="text-[0.72rem] uppercase tracking-[0.2em] text-mutedbrand tabular-nums">
             {String(properties.length).padStart(2, "0")}{" "}
-            {offerType === "SALE"
-              ? locale === "en"
-                ? "properties"
-                : "biens"
-              : locale === "en"
-                ? "properties"
-                : "biens"}
+            {locale === "en" ? "properties" : "biens"}
           </span>
         </div>
       </Reveal>

@@ -126,6 +126,7 @@ export default async function RelocationPage({
             <ContactForm
               t={t}
               locale={l}
+              type="relocation"
               defaultSubject={en ? "Relocation enquiry" : "Demande de relocation"}
             />
           </div>

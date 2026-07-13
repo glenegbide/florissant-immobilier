@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ListingPage } from "@/components/ListingGrid";
+import { ListingPage, type ListingFilters } from "@/components/ListingGrid";
 
 export const dynamic = "force-dynamic";
 
@@ -24,9 +24,18 @@ export async function generateMetadata({
 
 export default async function PropertiesPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ locale: string }>;
+  searchParams: Promise<ListingFilters>;
 }) {
   const { locale } = await params;
-  return <ListingPage locale={locale} />;
+  const filters = await searchParams;
+  return (
+    <ListingPage
+      locale={locale}
+      filters={filters}
+      basePath={`/${locale}/${locale === "en" ? "properties" : "biens"}`}
+    />
+  );
 }

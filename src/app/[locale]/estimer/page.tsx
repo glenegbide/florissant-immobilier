@@ -50,6 +50,7 @@ export default async function EstimatePage({
             <ContactForm
               t={t}
               locale={l}
+              type="valuation"
               defaultSubject={en ? "Valuation request" : "Demande d'estimation"}
             />
           </div>

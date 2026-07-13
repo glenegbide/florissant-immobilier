@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { getDict } from "@/lib/i18n";
+import { publicWhere } from "@/lib/listings";
 import { PropertyCard } from "@/components/PropertyCard";
 import { Reveal } from "@/components/Reveal";
 
@@ -12,7 +13,7 @@ export async function ListingPage({
 }) {
   const t = getDict(locale);
   const properties = await prisma.property.findMany({
-    where: { status: "active", ...(offerType ? { offerType } : {}) },
+    where: { ...publicWhere(), ...(offerType ? { offerType } : {}) },
     orderBy: [{ featured: "desc" }, { createdAt: "desc" }],
   });
 

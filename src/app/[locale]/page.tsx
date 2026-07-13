@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { getDict, isLocale } from "@/lib/i18n";
+import { publicWhere } from "@/lib/listings";
 import { site } from "@/lib/site";
 import { localePath } from "@/lib/routes";
 import { PropertyCard } from "@/components/PropertyCard";
@@ -20,7 +21,7 @@ export default async function HomePage({
   const l = isLocale(locale) ? locale : "fr";
 
   const featured = await prisma.property.findMany({
-    where: { status: "active", featured: true },
+    where: { ...publicWhere(), featured: true },
     orderBy: { createdAt: "desc" },
     take: 3,
   });

@@ -13,16 +13,18 @@ enum OfferType {
 }
 
 model Message {
-  id        String   @id @default(cuid())
-  name      String
-  email     String
-  phone     String?
-  subject   String?
-  body      String
-  reference String? // property reference the enquiry is about, if any
-  locale    String   @default("fr")
-  read      Boolean  @default(false)
-  createdAt DateTime @default(now())
+  id               String   @id @default(cuid())
+  type             String   @default("contact") // contact | valuation | relocation | owner | property
+  name             String
+  email            String
+  phone            String?
+  subject          String?
+  body             String
+  reference        String? // property reference the enquiry is about, if any
+  preferredContact String? // email | phone | whatsapp
+  locale           String   @default("fr")
+  read             Boolean  @default(false)
+  createdAt        DateTime @default(now())
 }
 
 model Property {
@@ -51,8 +53,10 @@ model Property {
   bedrooms       Int? // chambres
   bathrooms      Int? // salles de bain
   floor          Int? // étage
+  buildingFloors Int? // étages dans l'immeuble
   livingArea     Int? // surface habitable m²
   usableArea     Int? // surface utile m²
+  landArea       Int? // surface du terrain m²
   volume         Int? // m³
   ceilingHeight  Float? // hauteur de la pièce, m
   yearBuilt      Int?
@@ -61,7 +65,9 @@ model Property {
   availability   String    @default("immediately") // immediately | by_agreement | date
   availableFrom  DateTime?
 
-  price          Int?
+  price          Int? // prix de vente ou loyer net
+  charges        Int? // charges mensuelles (location)
+  grossRent      Int? // loyer brut = net + charges (location)
   priceOnRequest Boolean   @default(false)
   currency       String    @default("CHF")
   priceUnit      String    @default("month") // month | week | day (rent only)
@@ -69,11 +75,62 @@ model Property {
 
   features       String[]  @default([])
   photos         String[]  @default([])
+  floorPlans     String[]  @default([]) // plans (images ou PDF)
+  brochureUrl    String? // plaquette PDF
+  videoUrl       String?
+  virtualTourUrl String?
 
   offMarket      Boolean   @default(false)
   featured       Boolean   @default(false)
-  status         String    @default("active") // active | draft | archived
+  status         String    @default("active") // active | draft | hidden | archived
+  transactionStatus String @default("available") // available | reserved | rented | sold
+  publishedAt    DateTime?
+  expiresAt      DateTime?
+
+  seoTitleFr     String?
+  seoTitleEn     String?
+  seoDescFr      String?
+  seoDescEn      String?
+
+  // ── Admin-only, never rendered publicly ──
+  internalNotes  String    @default("")
+  ownerName      String?
+  ownerContact   String?
+  commission     String?
+  listingSource  String?
+
+  // ── External integrations (adapter layer) ──
+  externalIds    Json      @default("{}") // { "providerSlug": "external-id" }
+  syncStatus     String? // ok | pending | error
+  lastSyncAt     DateTime?
 
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
+}
+
+// Integration placeholders — disabled until credentials are provided.
+// Credentials themselves live in environment variables, never in the DB.
+model Integration {
+  id            String    @id @default(cuid())
+  provider      String    @unique // slug, e.g. "immoscout24"
+  label         String
+  apiUrl        String?
+  envKeyName    String? // name of the env var holding the API key
+  enabled       Boolean   @default(false)
+  importEnabled Boolean   @default(false)
+  exportEnabled Boolean   @default(false)
+  status        String    @default("not_configured") // not_configured | ok | error
+  lastSyncAt    DateTime?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  logs          SyncLog[]
+}
+
+model SyncLog {
+  id            String      @id @default(cuid())
+  integrationId String
+  integration   Integration @relation(fields: [integrationId], references: [id], onDelete: Cascade)
+  level         String      @default("info") // info | warn | error
+  message       String
+  createdAt     DateTime    @default(now())
 }

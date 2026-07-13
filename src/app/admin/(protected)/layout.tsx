@@ -36,6 +36,9 @@ export default async function AdminLayout({ children }: { children: React.ReactN
                   </span>
                 )}
               </Link>
+              <Link href="/admin/integrations" className="hover:text-bordeaux transition-colors">
+                Intégrations
+              </Link>
             </nav>
           </div>
           <div className="flex items-center gap-6">

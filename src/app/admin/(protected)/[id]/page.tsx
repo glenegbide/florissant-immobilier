@@ -17,6 +17,9 @@ export default async function EditPropertyPage({
     availableFrom: p.availableFrom
       ? p.availableFrom.toISOString().slice(0, 10)
       : null,
+    expiresAt: p.expiresAt ? p.expiresAt.toISOString().slice(0, 10) : null,
+    lastSyncAt: p.lastSyncAt ? p.lastSyncAt.toISOString().slice(0, 16).replace("T", " ") : null,
+    externalIdsDisplay: JSON.stringify(p.externalIds),
   };
 
   return (

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { prisma } from "@/lib/prisma";
+import { publicWhere } from "@/lib/listings";
 import { pageSlugs, type PageKey } from "@/lib/routes";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://florissantimmobilier.ch";
@@ -39,7 +40,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   let properties: { reference: string; updatedAt: Date }[] = [];
   try {
     properties = await prisma.property.findMany({
-      where: { status: "active" },
+      where: publicWhere(),
       select: { reference: true, updatedAt: true },
     });
   } catch {

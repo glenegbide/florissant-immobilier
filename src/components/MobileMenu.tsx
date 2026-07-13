@@ -21,6 +21,8 @@ export function MobileMenu({
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
+  // Standard SSR guard: createPortal must only run client-side.
+  // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => setMounted(true), []);
 
   useEffect(() => {

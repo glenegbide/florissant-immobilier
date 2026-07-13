@@ -16,6 +16,10 @@ const enSlugs: Array<[en: string, fr: string]> = [
 const nextConfig: NextConfig = {
   // Self-hosting (Hostinger VPS): emit a lean standalone server.
   output: "standalone",
+  images: {
+    // Qualities used by <Image quality={…}> across the site.
+    qualities: [75, 90],
+  },
   outputFileTracingIncludes: {
     // Ship the Prisma query engine + schema so migrations run at container start.
     "/": ["./prisma/**", "./src/generated/**"],

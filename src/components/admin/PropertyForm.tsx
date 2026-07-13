@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   objectTypeGroups,
   subtypesByType,
@@ -776,9 +777,9 @@ export function PropertyForm({
             )}
             <p className="text-sm font-light text-mutedbrand">
               Les connexions aux portails se configurent dans{" "}
-              <a href="/admin/integrations" className="text-bordeaux underline">
+              <Link href="/admin/integrations" className="text-bordeaux underline">
                 Intégrations
-              </a>
+              </Link>
               .
             </p>
           </div>

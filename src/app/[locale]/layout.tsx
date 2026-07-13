@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { HtmlLang } from "@/components/HtmlLang";
 import { getDict, isLocale, locales } from "@/lib/i18n";
 
 export function generateStaticParams() {
@@ -19,10 +20,8 @@ export async function generateMetadata({
     title: isEn
       ? "Swiss real estate with an international perspective"
       : "L'immobilier suisse, avec une vision internationale",
-    alternates: {
-      canonical: `/${isEn ? "en" : "fr"}`,
-      languages: { fr: "/fr", en: "/en" },
-    },
+    // No alternates here: canonical/hreflang are set per page so they
+    // point at the actual page, not the locale root.
     openGraph: { locale: isEn ? "en_US" : "fr_CH" },
   };
 }
@@ -71,6 +70,7 @@ export default async function LocaleLayout({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <HtmlLang locale={locale} />
       <Header locale={locale} t={t} />
       <main className="flex-1">{children}</main>
       <Footer locale={locale} t={t} />

@@ -27,6 +27,17 @@ export function localePath(locale: string, key: PageKey | "home"): string {
   return `/${l}/${pageSlugs[key][l]}`;
 }
 
+/** Per-page canonical + hreflang pair for generateMetadata. */
+export function pageAlternates(locale: string, key: PageKey | "home") {
+  return {
+    canonical: localePath(locale, key),
+    languages: {
+      fr: localePath("fr", key),
+      en: localePath("en", key),
+    },
+  };
+}
+
 /** Translate a full pathname (e.g. "/fr/acheter") to the equivalent page in the target locale. */
 export function switchLocalePath(pathname: string, target: string): string {
   const t = loc(target);

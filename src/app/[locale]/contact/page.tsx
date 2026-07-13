@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDict, isLocale } from "@/lib/i18n";
 import { site } from "@/lib/site";
 import { ContactForm } from "@/components/ContactForm";
+import { pageAlternates } from "@/lib/routes";
 
 export async function generateMetadata({
   params,
@@ -13,6 +14,7 @@ export async function generateMetadata({
   return {
     title: `${t.contact.title} — Florissant Immobilier`,
     description: t.contact.intro,
+    alternates: pageAlternates(locale, "contact"),
   };
 }
 

@@ -16,7 +16,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string; reference: string }>;
 }): Promise<Metadata> {
   const { locale, reference } = await params;
-  const p = await prisma.property.findUnique({ where: { reference } });
+  const p = await prisma.property.findFirst({
+    where: { reference, ...publicWhere() },
+  });
   if (!p) return { title: "Bien introuvable" };
   const en = locale === "en";
   const title = (en ? p.seoTitleEn : p.seoTitleFr) || (en ? p.titleEn : p.titleFr);
@@ -26,7 +28,13 @@ export async function generateMetadata({
   return {
     title,
     description: desc,
-    alternates: { canonical: `/${locale}/bien/${reference}` },
+    alternates: {
+      canonical: `/${locale}/bien/${reference}`,
+      languages: {
+        fr: `/fr/bien/${reference}`,
+        en: `/en/bien/${reference}`,
+      },
+    },
     openGraph: {
       title,
       description: desc,

@@ -56,10 +56,6 @@ export const metadata: Metadata = {
     description: "L'immobilier suisse, avec une vision internationale.",
     images: ["/photos/hero_roses.jpg"],
   },
-  alternates: {
-    canonical: "/fr",
-    languages: { fr: "/fr", en: "/en" },
-  },
   robots: { index: true, follow: true },
 };
 
@@ -71,6 +67,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
+      data-scroll-behavior="smooth"
       className={`${playfair.variable} ${geist.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">{children}</body>

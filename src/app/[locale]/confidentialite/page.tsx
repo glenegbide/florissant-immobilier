@@ -1,11 +1,22 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { pageAlternates } from "@/lib/routes";
 
-export const metadata: Metadata = {
-  title: "Confidentialité",
-  description:
-    "Politique de confidentialité et protection des données de Florissant Immobilier.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const en = locale === "en";
+  return {
+    title: en ? "Privacy policy" : "Confidentialité",
+    description: en
+      ? "Privacy and data-protection policy of Florissant Immobilier International."
+      : "Politique de confidentialité et protection des données de Florissant Immobilier.",
+    alternates: pageAlternates(locale, "privacy"),
+  };
+}
 
 export default async function PrivacyPage({
   params,

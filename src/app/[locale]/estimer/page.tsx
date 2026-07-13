@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { getDict, isLocale } from "@/lib/i18n";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
+import { pageAlternates } from "@/lib/routes";
 
 export async function generateMetadata({
   params,
@@ -15,6 +16,7 @@ export async function generateMetadata({
     description: en
       ? "Request a confidential, documented valuation of your property in Geneva, Vaud or French-speaking Switzerland."
       : "Demandez une estimation confidentielle et documentée de votre bien à Genève, dans le canton de Vaud ou en Suisse romande.",
+    alternates: pageAlternates(locale, "estimate"),
   };
 }
 

@@ -1,10 +1,22 @@
 import type { Metadata } from "next";
 import { site } from "@/lib/site";
+import { pageAlternates } from "@/lib/routes";
 
-export const metadata: Metadata = {
-  title: "Mentions légales",
-  description: "Mentions légales de Florissant Immobilier · International.",
-};
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const en = locale === "en";
+  return {
+    title: en ? "Legal notice" : "Mentions légales",
+    description: en
+      ? "Legal notice of Florissant Immobilier International."
+      : "Mentions légales de Florissant Immobilier International.",
+    alternates: pageAlternates(locale, "legal"),
+  };
+}
 
 export default async function LegalPage({
   params,

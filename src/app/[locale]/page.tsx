@@ -4,12 +4,21 @@ import { prisma } from "@/lib/prisma";
 import { getDict, isLocale } from "@/lib/i18n";
 import { publicWhere } from "@/lib/listings";
 import { site } from "@/lib/site";
-import { localePath } from "@/lib/routes";
+import { localePath, pageAlternates } from "@/lib/routes";
 import { PropertyCard } from "@/components/PropertyCard";
 import { Reveal } from "@/components/Reveal";
 import { ContactForm } from "@/components/ContactForm";
 
 export const dynamic = "force-dynamic";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return { alternates: pageAlternates(locale, "home") };
+}
 
 export default async function HomePage({
   params,

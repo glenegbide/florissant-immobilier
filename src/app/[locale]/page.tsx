@@ -6,6 +6,8 @@ import { PropertyCard } from "@/components/PropertyCard";
 import { Reveal } from "@/components/Reveal";
 import { AnimatedText } from "@/components/ui/animated-underline-text-one";
 
+export const dynamic = "force-dynamic";
+
 export default async function HomePage({
   params,
 }: {

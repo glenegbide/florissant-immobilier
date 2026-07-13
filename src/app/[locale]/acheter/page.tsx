@@ -1,5 +1,7 @@
 import { ListingPage } from "@/components/ListingGrid";
 
+export const dynamic = "force-dynamic";
+
 export default async function BuyPage({
   params,
 }: {

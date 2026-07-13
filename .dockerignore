@@ -1,0 +1,15 @@
+node_modules
+.next
+.git
+.gitignore
+.env
+.env.*
+npm-debug.log*
+brand-assets
+public/uploads
+README.md
+DEPLOY-HOSTINGER.md
+Dockerfile
+.dockerignore
+docker-compose.yml
+Caddyfile

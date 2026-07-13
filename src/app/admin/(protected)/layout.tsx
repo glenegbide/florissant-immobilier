@@ -3,6 +3,8 @@ import Image from "next/image";
 import { logout } from "./actions";
 import { prisma } from "@/lib/prisma";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const unread = await prisma.message.count({ where: { read: false } });
   return (

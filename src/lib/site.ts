@@ -14,11 +14,10 @@ export const site = {
   regions: ["Genève", "Nyon", "Gland", "Rolle", "Lausanne", "Canton de Vaud", "Suisse romande"],
 
   socials: {
-    // Paste the full address of each new account here.
-    // Example: "https://www.instagram.com/florissant.immobilier"
-    instagram: "",
+    instagram: "https://www.instagram.com/florissantimmobilier",
+    // Waiting for the exact page URL — leave "" to hide the icon.
     facebook: "",
-    linkedin: "",
+    linkedin: "https://www.linkedin.com/company/florissant-immobilier/",
   },
 };
 

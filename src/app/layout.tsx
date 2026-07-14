@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Geist } from "next/font/google";
+import { Libre_Bodoni, Geist } from "next/font/google";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+// Display face: Libre Bodoni (prestigious Didone), loaded into the
+// existing --font-playfair variable used by the .font-display styles.
+const playfair = Libre_Bodoni({
   variable: "--font-playfair",
   subsets: ["latin"],
   style: ["normal", "italic"],

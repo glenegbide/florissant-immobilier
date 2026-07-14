@@ -6,7 +6,7 @@ export const site = {
   name: "Florissant Immobilier International",
   domain: "florissantimmobilier.ch",
   url: "https://florissantimmobilier.ch",
-  email: "info@florissantimmobilier.ch",
+  email: "glen@florissantimmobilier.ch",
   phone: "+41 76 452 10 91",
   // wa.me link — digits only, no "+", no spaces
   whatsapp: "41764521091",

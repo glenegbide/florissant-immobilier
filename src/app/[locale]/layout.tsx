@@ -45,7 +45,7 @@ export default async function LocaleLayout({
     url: siteUrl,
     logo: `${siteUrl}/logo/icon.svg`,
     image: `${siteUrl}/photos/hero_roses.jpg`,
-    email: "info@florissantimmobilier.ch",
+    email: "glen@florissantimmobilier.ch",
     telephone: "+41 76 452 10 91",
     address: {
       "@type": "PostalAddress",

@@ -37,14 +37,8 @@ COPY --from=builder /app/public ./public
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 
-# Prisma CLI + schema so the entrypoint can create/update tables on boot
-COPY --from=builder /app/node_modules/prisma ./node_modules/prisma
-COPY --from=builder /app/node_modules/@prisma ./node_modules/@prisma
-COPY --from=builder /app/node_modules/.bin/prisma ./node_modules/.bin/prisma
-# dotenv is imported by prisma.config.ts when the CLI runs at boot
-COPY --from=builder /app/node_modules/dotenv ./node_modules/dotenv
-COPY --from=builder /app/prisma ./prisma
-COPY --from=builder /app/prisma.config.ts ./prisma.config.ts
+# Database schema updates run in the "migrate" compose service (builder
+# image), so the runtime image stays lean — no Prisma CLI needed here.
 COPY docker-entrypoint.sh ./docker-entrypoint.sh
 
 # Persist uploaded property photos here (mounted as a volume in compose)

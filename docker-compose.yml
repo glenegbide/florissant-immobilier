@@ -19,12 +19,28 @@ services:
       timeout: 5s
       retries: 12
 
+  # One-shot: creates/updates the database tables, then exits.
+  # Uses the full builder image where the Prisma CLI has all its deps.
+  migrate:
+    build:
+      context: .
+      target: builder
+    command: npx prisma db push --skip-generate
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://florissant:${DB_PASSWORD}@db:5432/florissant
+
   web:
     build: .
     restart: unless-stopped
     depends_on:
       db:
         condition: service_healthy
+      migrate:
+        condition: service_completed_successfully
     environment:
       DATABASE_URL: postgresql://florissant:${DB_PASSWORD}@db:5432/florissant
       ADMIN_EMAIL: ${ADMIN_EMAIL}

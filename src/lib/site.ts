@@ -15,8 +15,7 @@ export const site = {
 
   socials: {
     instagram: "https://www.instagram.com/florissantimmobilier",
-    // Waiting for the exact page URL — leave "" to hide the icon.
-    facebook: "",
+    facebook: "https://www.facebook.com/florissantimmobilier",
     linkedin: "https://www.linkedin.com/company/florissant-immobilier/",
   },
 };

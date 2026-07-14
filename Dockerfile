@@ -7,7 +7,9 @@ FROM node:22-alpine AS deps
 RUN apk add --no-cache libc6-compat openssl
 WORKDIR /app
 COPY package.json package-lock.json ./
-RUN npm ci
+# --ignore-scripts: postinstall runs "prisma generate", but the schema is
+# only copied in the builder stage (where "npm run build" regenerates it).
+RUN npm ci --ignore-scripts
 
 # 2. Build the app
 FROM node:22-alpine AS builder

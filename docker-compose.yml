@@ -25,7 +25,7 @@ services:
     build:
       context: .
       target: builder
-    command: npx prisma db push --skip-generate
+    command: npx prisma db push
     restart: "no"
     depends_on:
       db:

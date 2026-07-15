@@ -77,7 +77,9 @@ export default async function PropertyPage({
 
   const en = locale === "en";
   const title = locale === "en" ? p.titleEn : p.titleFr;
-  const description = locale === "en" ? p.descriptionEn : p.descriptionFr;
+  // English falls back to the French text until a translation is added.
+  const description =
+    locale === "en" ? p.descriptionEn || p.descriptionFr : p.descriptionFr;
   const label = priceLabel(p, t.listing);
   const backHref = `/${locale}/${p.offerType === "SALE" ? "acheter" : "louer"}`;
 

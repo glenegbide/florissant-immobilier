@@ -16,6 +16,12 @@ const enSlugs: Array<[en: string, fr: string]> = [
 const nextConfig: NextConfig = {
   // Self-hosting (Hostinger VPS): emit a lean standalone server.
   output: "standalone",
+  experimental: {
+    serverActions: {
+      // The admin uploads batches of full-size property photos.
+      bodySizeLimit: "200mb",
+    },
+  },
   images: {
     // Qualities used by <Image quality={…}> across the site.
     qualities: [75, 90],

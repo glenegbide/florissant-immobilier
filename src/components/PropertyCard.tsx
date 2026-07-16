@@ -18,7 +18,14 @@ export type PropertyCardData = {
   priceOnRequest: boolean;
   priceUnit: string;
   offMarket: boolean;
+  transactionStatus?: string;
   photos: string[];
+};
+
+const TX_LABELS: Record<string, { fr: string; en: string }> = {
+  reserved: { fr: "Réservé", en: "Reserved" },
+  rented: { fr: "Loué", en: "Rented" },
+  sold: { fr: "Vendu", en: "Sold" },
 };
 
 export function PropertyCard({
@@ -63,6 +70,12 @@ export function PropertyCard({
         {p.offMarket && (
           <span className="absolute top-4 right-4 border border-white/70 px-2.5 py-1 text-[0.6rem] uppercase tracking-[0.2em] text-white backdrop-blur-sm">
             {t.listing.offMarket}
+          </span>
+        )}
+
+        {p.transactionStatus && TX_LABELS[p.transactionStatus] && (
+          <span className="absolute bottom-4 left-4 bg-bordeaux px-3 py-1.5 text-[0.62rem] uppercase tracking-[0.2em] text-white">
+            {TX_LABELS[p.transactionStatus][locale === "en" ? "en" : "fr"]}
           </span>
         )}
       </div>

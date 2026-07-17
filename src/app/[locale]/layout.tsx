@@ -43,7 +43,7 @@ export default async function LocaleLayout({
     "@type": "RealEstateAgent",
     name: "Florissant Immobilier International",
     url: siteUrl,
-    logo: `${siteUrl}/logo/icon.svg`,
+    logo: `${siteUrl}/logo/icon.png`,
     image: `${siteUrl}/photos/hero_roses.jpg`,
     email: "glen@florissantimmobilier.ch",
     telephone: "+41 76 452 10 91",

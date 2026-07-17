@@ -10,10 +10,9 @@ export function Wordmark({
   const suffix = onDark ? "-ivory" : "";
   return (
     <Link href={`/${locale}`} className="flex items-center gap-3.5">
-      {/* Vector logo — crisp at every size and zoom */}
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
-        src={`/logo/icon${suffix}.svg`}
+        src={`/logo/icon${suffix}.png`}
         alt=""
         className="h-14 w-auto shrink-0"
       />

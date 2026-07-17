@@ -4,7 +4,7 @@ export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center bg-white px-6 text-center">
       {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/logo/icon.svg" alt="" className="h-20 w-auto opacity-90" />
+      <img src="/logo/icon.png" alt="" className="h-20 w-auto opacity-90" />
       <p className="eyebrow mt-8">Florissant Immobilier · International</p>
       <h1 className="mt-4 font-display text-4xl text-ink lg:text-5xl">
         Page introuvable

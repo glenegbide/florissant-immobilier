@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { getDict, isLocale } from "@/lib/i18n";
 import { publicWhere } from "@/lib/listings";
@@ -48,15 +47,18 @@ export default async function HomePage({
       {/* ── Hero — clean landscape band with floating card ── */}
       <section className="relative">
         <div className="hero-curtain relative h-[56vh] min-h-[420px] w-full overflow-hidden lg:h-[66vh]">
-          <Image
-            src="/photos/hero_roses.jpg"
-            alt="Florissant Immobilier International"
-            fill
-            priority
-            quality={90}
-            sizes="100vw"
-            className="hero-zoom object-cover object-[60%_40%]"
-          />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/photos/jet_deau.jpg"
+            aria-label="Florissant Immobilier International"
+            className="absolute inset-0 h-full w-full object-cover object-[60%_40%]"
+          >
+            <source src="/videos/Florissant_Geneva_Cinematic_v3.mp4" type="video/mp4" />
+          </video>
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
         </div>
 

@@ -57,7 +57,7 @@ const dictionaries = {
       regionsTitleEm: "un ancrage romand.",
       regionsText:
         "Nous accompagnons nos clients sur l'arc lémanique et dans toute la Suisse romande — de Genève au canton de Vaud, de Nyon à Lausanne, en passant par Gland et Rolle.",
-      ownerTitle: "Vous souhaitez vendre ou louer votre bien ?",
+      ownerTitle: "Vous souhaitez vendre ou louer votre bien ?",
       ownerText:
         "Nous vous accompagnons dans l'estimation, la mise en valeur, la commercialisation et la sélection des candidats ou acquéreurs.",
       ownerCta: "Parler de mon projet",

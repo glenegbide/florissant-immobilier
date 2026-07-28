@@ -57,8 +57,8 @@ export default async function HomePage({
             aria-label="Florissant Immobilier International"
             className="absolute inset-0 h-full w-full object-cover object-[60%_40%]"
           >
-            <source src="/videos/Florissant_Geneva_Cinematic_v3.webm" type="video/webm" />
             <source src="/videos/Florissant_Geneva_Cinematic_v3.mp4" type="video/mp4" />
+            <source src="/videos/Florissant_Geneva_Cinematic_v3.webm" type="video/webm" />
           </video>
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
 

@@ -44,9 +44,9 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ── Hero — clean landscape band with floating card ── */}
+      {/* ── Hero — full-bleed video with overlaid headline ── */}
       <section className="relative">
-        <div className="hero-curtain relative h-[56vh] min-h-[420px] w-full overflow-hidden lg:h-[66vh]">
+        <div className="hero-curtain relative h-[72vh] min-h-[520px] w-full overflow-hidden lg:h-[80vh]">
           <video
             autoPlay
             muted
@@ -57,63 +57,63 @@ export default async function HomePage({
             aria-label="Florissant Immobilier International"
             className="absolute inset-0 h-full w-full object-cover object-[60%_40%]"
           >
+            <source src="/videos/Florissant_Geneva_Cinematic_v3.webm" type="video/webm" />
             <source src="/videos/Florissant_Geneva_Cinematic_v3.mp4" type="video/mp4" />
           </video>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
-        </div>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-black/25 to-black/10" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative z-20 -mt-24 max-w-2xl border border-line bg-white p-8 lg:-mt-28 lg:p-12">
-            <p
-              className="eyebrow hero-rise"
-              style={{ ["--rise-delay" as string]: "0ms" }}
-            >
-              {t.hero.pretitle}
-            </p>
-            <h1
-              className="hero-rise mt-5 font-display text-[2.3rem] leading-[1.08] text-ink sm:text-[2.9rem] lg:text-[3.2rem]"
-              style={{ ["--rise-delay" as string]: "90ms" }}
-            >
-              {t.hero.titleA}
-              <em className="text-bordeaux">{t.hero.titleEm}</em>
-            </h1>
-            <div
-              className="hero-rise mt-6 h-px w-16 bg-bordeaux"
-              style={{ ["--rise-delay" as string]: "180ms" }}
-            />
-            <p
-              className="hero-rise mt-6 max-w-md text-[1.05rem] font-light leading-relaxed text-mutedbrand"
-              style={{ ["--rise-delay" as string]: "240ms" }}
-            >
-              {t.hero.subtitle}
-            </p>
-            <div
-              className="hero-rise mt-8 flex flex-wrap items-center gap-4"
-              style={{ ["--rise-delay" as string]: "320ms" }}
-            >
-              <Link
-                href={localePath(l, "properties")}
-                className="arrow-link bg-bordeaux px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+          <div className="absolute inset-0 flex items-end">
+            <div className="mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20">
+              <p
+                className="eyebrow hero-rise text-white/70"
+                style={{ ["--rise-delay" as string]: "0ms" }}
               >
-                {t.hero.ctaProperties} <span className="arrow ml-1">→</span>
-              </Link>
-              <Link
-                href={localePath(l, "estimate")}
-                className="border border-line px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-ink transition-colors hover:border-bordeaux hover:text-bordeaux"
+                {t.hero.pretitle}
+              </p>
+              <h1
+                className="hero-rise mt-4 max-w-3xl font-display text-[2.4rem] leading-[1.08] text-white sm:text-[3rem] lg:text-[3.6rem]"
+                style={{ ["--rise-delay" as string]: "90ms" }}
               >
-                {t.hero.ctaEstimate}
-              </Link>
-              <Link
-                href={localePath(l, "contact")}
-                className="link-underline py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-ink transition-colors hover:text-bordeaux"
+                {t.hero.titleA}
+                <em className="text-white/90">{t.hero.titleEm}</em>
+              </h1>
+              <p
+                className="hero-rise mt-5 max-w-md text-[1.02rem] font-light leading-relaxed text-white/80"
+                style={{ ["--rise-delay" as string]: "180ms" }}
               >
-                {t.hero.ctaContact}
-              </Link>
+                {t.hero.subtitle}
+              </p>
+              <div
+                className="hero-rise mt-8 flex flex-wrap items-center gap-4"
+                style={{ ["--rise-delay" as string]: "260ms" }}
+              >
+                <Link
+                  href={localePath(l, "properties")}
+                  className="arrow-link bg-bordeaux px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+                >
+                  {t.hero.ctaProperties} <span className="arrow ml-1">→</span>
+                </Link>
+                <Link
+                  href={localePath(l, "estimate")}
+                  className="border border-white/40 px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:border-white hover:bg-white/10"
+                >
+                  {t.hero.ctaEstimate}
+                </Link>
+                <Link
+                  href={localePath(l, "contact")}
+                  className="link-underline py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white/90 transition-colors hover:text-white"
+                >
+                  {t.hero.ctaContact}
+                </Link>
+              </div>
+              <p
+                className="hero-rise mt-10 text-[0.68rem] uppercase tracking-[0.22em] text-white/60"
+                style={{ ["--rise-delay" as string]: "340ms" }}
+              >
+                {t.hero.regions}
+              </p>
             </div>
           </div>
-          <p className="mt-6 text-[0.68rem] uppercase tracking-[0.22em] text-mutedbrand">
-            {t.hero.regions}
-          </p>
         </div>
       </section>
 

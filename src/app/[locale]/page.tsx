@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { prisma } from "@/lib/prisma";
 import { getDict, isLocale } from "@/lib/i18n";
 import { publicWhere } from "@/lib/listings";
@@ -45,73 +44,88 @@ export default async function HomePage({
 
   return (
     <>
-      {/* ── Hero — clean landscape band with floating card ── */}
+      {/* ── Hero — full-bleed video with overlaid headline ── */}
       <section className="relative">
-        <div className="hero-curtain relative h-[56vh] min-h-[420px] w-full overflow-hidden lg:h-[66vh]">
-          <Image
-            src="/photos/hero_roses.jpg"
-            alt="Florissant Immobilier International"
-            fill
-            priority
-            quality={90}
-            sizes="100vw"
-            className="hero-zoom object-cover object-[60%_40%]"
-          />
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/25 to-transparent" />
-        </div>
+        <div className="hero-curtain relative h-[72vh] min-h-[520px] w-full overflow-hidden lg:h-[80vh]">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            poster="/photos/jet_deau.jpg"
+            aria-label="Florissant Immobilier International"
+            className="absolute inset-0 h-full w-full object-cover object-[60%_40%]"
+          >
+            <source src="/videos/Florissant_Geneva_Cinematic_v3.mp4" type="video/mp4" />
+            <source src="/videos/Florissant_Geneva_Cinematic_v3.webm" type="video/webm" />
+          </video>
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/15" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-black/35 via-transparent to-transparent" />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="relative z-20 -mt-24 max-w-2xl border border-line bg-white p-8 lg:-mt-28 lg:p-12">
-            <p
-              className="eyebrow hero-rise"
-              style={{ ["--rise-delay" as string]: "0ms" }}
-            >
-              {t.hero.pretitle}
-            </p>
-            <h1
-              className="hero-rise mt-5 font-display text-[2.3rem] leading-[1.08] text-ink sm:text-[2.9rem] lg:text-[3.2rem]"
-              style={{ ["--rise-delay" as string]: "90ms" }}
-            >
-              {t.hero.titleA}
-              <em className="text-bordeaux">{t.hero.titleEm}</em>
-            </h1>
-            <div
-              className="hero-rise mt-6 h-px w-16 bg-bordeaux"
-              style={{ ["--rise-delay" as string]: "180ms" }}
-            />
-            <p
-              className="hero-rise mt-6 max-w-md text-[1.05rem] font-light leading-relaxed text-mutedbrand"
-              style={{ ["--rise-delay" as string]: "240ms" }}
-            >
-              {t.hero.subtitle}
-            </p>
-            <div
-              className="hero-rise mt-8 flex flex-wrap items-center gap-4"
-              style={{ ["--rise-delay" as string]: "320ms" }}
-            >
-              <Link
-                href={localePath(l, "properties")}
-                className="arrow-link bg-bordeaux px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+          <div className="absolute inset-0 flex items-end">
+            <div className="mx-auto w-full max-w-7xl px-4 pb-14 sm:px-6 lg:px-8 lg:pb-20">
+              <p
+                className="eyebrow hero-rise text-gold"
+                style={{ ["--rise-delay" as string]: "0ms" }}
               >
-                {t.hero.ctaProperties} <span className="arrow ml-1">→</span>
-              </Link>
-              <Link
-                href={localePath(l, "estimate")}
-                className="border border-line px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-ink transition-colors hover:border-bordeaux hover:text-bordeaux"
+                {t.hero.pretitle}
+              </p>
+              <h1
+                className="hero-rise mt-4 max-w-3xl font-display text-[2.4rem] leading-[1.08] text-white sm:text-[3rem] lg:text-[3.6rem]"
+                style={{ ["--rise-delay" as string]: "90ms" }}
               >
-                {t.hero.ctaEstimate}
-              </Link>
-              <Link
-                href={localePath(l, "contact")}
-                className="link-underline py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-ink transition-colors hover:text-bordeaux"
+                {t.hero.titleA}
+                <em className="text-white/90">{t.hero.titleEm}</em>
+              </h1>
+              <div
+                className="hero-rise mt-6 h-px w-16 bg-gold"
+                style={{ ["--rise-delay" as string]: "150ms" }}
+              />
+              <p
+                className="hero-rise mt-5 max-w-md text-[1.02rem] font-light leading-relaxed text-white/80"
+                style={{ ["--rise-delay" as string]: "180ms" }}
               >
-                {t.hero.ctaContact}
-              </Link>
+                {t.hero.subtitle}
+              </p>
+              <div
+                className="hero-rise mt-8 flex flex-wrap items-center gap-4"
+                style={{ ["--rise-delay" as string]: "260ms" }}
+              >
+                <Link
+                  href={localePath(l, "properties")}
+                  className="arrow-link bg-bordeaux px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+                >
+                  {t.hero.ctaProperties} <span className="arrow ml-1">→</span>
+                </Link>
+                <Link
+                  href={localePath(l, "estimate")}
+                  className="border border-white/40 px-7 py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:border-white hover:bg-white/10"
+                >
+                  {t.hero.ctaEstimate}
+                </Link>
+                <Link
+                  href={localePath(l, "contact")}
+                  className="link-underline py-3.5 text-[0.75rem] uppercase tracking-[0.2em] text-white/90 transition-colors hover:text-white"
+                >
+                  {t.hero.ctaContact}
+                </Link>
+              </div>
+              <p
+                className="hero-rise mt-10 text-[0.68rem] uppercase tracking-[0.22em] text-white/60"
+                style={{ ["--rise-delay" as string]: "340ms" }}
+              >
+                {t.hero.regions}
+              </p>
             </div>
           </div>
-          <p className="mt-6 text-[0.68rem] uppercase tracking-[0.22em] text-mutedbrand">
-            {t.hero.regions}
-          </p>
+
+          <div
+            aria-hidden
+            className="hero-cue absolute bottom-8 left-1/2 hidden h-14 w-px -translate-x-1/2 lg:block"
+          >
+            <span />
+          </div>
         </div>
       </section>
 
@@ -226,19 +240,20 @@ export default async function HomePage({
         </div>
       </section>
 
-      {/* ── Owner call-to-action ── */}
-      <section className="border-t border-line bg-stone">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-16 text-center lg:py-20">
+      {/* ── Owner call-to-action — deep bordeaux band ── */}
+      <section className="bg-bordeaux-deep">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 py-20 text-center lg:py-24">
           <Reveal>
-            <h2 className="font-display text-3xl leading-[1.15] text-ink lg:text-[2.4rem]">
+            <span className="mx-auto block h-px w-10 bg-gold" />
+            <h2 className="mt-8 font-display text-3xl leading-[1.15] text-white lg:text-[2.4rem]">
               {t.home.ownerTitle}
             </h2>
-            <p className="mx-auto mt-6 max-w-xl text-[1.02rem] font-light leading-relaxed text-mutedbrand">
+            <p className="mx-auto mt-6 max-w-xl text-[1.02rem] font-light leading-relaxed text-white/70">
               {t.home.ownerText}
             </p>
             <Link
               href={localePath(l, "contact")}
-              className="arrow-link mt-9 inline-block bg-bordeaux px-8 py-4 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+              className="arrow-link mt-10 inline-block border border-gold/70 px-8 py-4 text-[0.75rem] uppercase tracking-[0.2em] text-gold transition-colors hover:bg-gold hover:text-bordeaux-deep"
             >
               {t.home.ownerCta} <span className="arrow ml-1">→</span>
             </Link>

@@ -33,23 +33,6 @@
   --color-line: var(--line);
   --font-sans: var(--font-geist);
   --font-display: var(--font-playfair);
-
-  /* ── MAINXP product area (/mainxp) — Part 58 palette, light mode default ── */
-  --color-mxp-bg: #faf9f7; /* warm near-white */
-  --color-mxp-card: #ffffff;
-  --color-mxp-ink: #1c1917;
-  --color-mxp-muted: #78716c;
-  --color-mxp-line: #e7e5e4;
-  --color-mxp-purple: #7c3aed; /* MAINXP identity / progression */
-  --color-mxp-purple-deep: #5b21b6;
-  --color-mxp-purple-soft: #ede9fe;
-  --color-mxp-green: #10b981; /* body / health / success */
-  --color-mxp-blue: #3b82f6; /* knowledge / clarity / focus */
-  --color-mxp-gold: #ca8a04; /* wealth / rewards / achievements */
-  --color-mxp-coral: #fb7185; /* people / community */
-  --color-mxp-teal: #14b8a6; /* mind / journal / reflection */
-  --color-mxp-orange: #f97316; /* challenge / momentum */
-  --color-mxp-red: #ef4444; /* urgent warnings / Beast Mode only */
 }
 
 html {

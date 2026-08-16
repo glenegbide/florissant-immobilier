@@ -21,6 +21,20 @@ async function expectedToken(): Promise<string> {
 
 export async function proxy(req: NextRequest) {
   const { pathname } = req.nextUrl;
+
+  // MAINXP (optimistic UX guard only — the real check is requireMxUser() server-side).
+  if (pathname.startsWith("/mainxp")) {
+    const isAuthPage =
+      pathname.startsWith("/mainxp/login") || pathname.startsWith("/mainxp/signup");
+    const hasSession = !!req.cookies.get("mxp_session")?.value;
+    if (!isAuthPage && !hasSession) {
+      const url = req.nextUrl.clone();
+      url.pathname = "/mainxp/login";
+      return NextResponse.redirect(url);
+    }
+    return NextResponse.next();
+  }
+
   if (!pathname.startsWith("/admin") || pathname.startsWith("/admin/login")) {
     return NextResponse.next();
   }
@@ -34,5 +48,5 @@ export async function proxy(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/admin/:path*", "/mainxp/:path*"],
 };

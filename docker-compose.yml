@@ -47,6 +47,9 @@ services:
       ADMIN_PASSWORD: ${ADMIN_PASSWORD}
       AUTH_SECRET: ${AUTH_SECRET}
       NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL}
+      # CRM: client form (/dossier) -> Airtable. Optional; empty = admin inbox only.
+      AIRTABLE_TOKEN: ${AIRTABLE_TOKEN:-}
+      AIRTABLE_BASE_ID: ${AIRTABLE_BASE_ID:-}
     volumes:
       - uploads:/app/public/uploads
     expose:

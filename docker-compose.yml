@@ -50,8 +50,13 @@ services:
       # CRM: client form (/dossier) -> Airtable. Optional; empty = admin inbox only.
       AIRTABLE_TOKEN: ${AIRTABLE_TOKEN:-}
       AIRTABLE_BASE_ID: ${AIRTABLE_BASE_ID:-}
+      # Online payment of the CHF 360 (TWINT / card). Optional; empty = bank transfer only.
+      PAYREXX_INSTANCE: ${PAYREXX_INSTANCE:-}
+      PAYREXX_SECRET: ${PAYREXX_SECRET:-}
     volumes:
       - uploads:/app/public/uploads
+      # Client documents (ID, debt certificates, pay slips): private, never served publicly.
+      - dossiers:/app/private/dossiers
     expose:
       - "3000"
 
@@ -73,5 +78,6 @@ services:
 volumes:
   db_data:
   uploads:
+  dossiers:
   caddy_data:
   caddy_config:

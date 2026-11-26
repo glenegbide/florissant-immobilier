@@ -7,6 +7,7 @@ export const pageSlugs = {
   sell: { fr: "vendre", en: "sell" },
   estimate: { fr: "estimer", en: "valuation" },
   relocation: { fr: "relocation", en: "relocation" },
+  inscription: { fr: "inscription", en: "registration" },
   properties: { fr: "biens", en: "properties" },
   about: { fr: "a-propos", en: "about" },
   contact: { fr: "contact", en: "contact" },

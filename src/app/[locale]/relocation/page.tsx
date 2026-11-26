@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { getDict, isLocale } from "@/lib/i18n";
 import { ContactForm } from "@/components/ContactForm";
 import { Reveal } from "@/components/Reveal";
+import Link from "next/link";
+import { localePath } from "@/lib/routes";
 
 export async function generateMetadata({
   params,
@@ -89,6 +91,12 @@ export default async function RelocationPage({
                 ? "For individuals and companies moving to Geneva, Vaud or anywhere in French-speaking Switzerland: we find your home and handle everything around it."
                 : "Pour les particuliers et les entreprises qui s'installent à Genève, dans le canton de Vaud ou ailleurs en Suisse romande : nous trouvons votre logement et gérons tout ce qui l'entoure."}
             </p>
+            <Link
+              href={localePath(l, "inscription")}
+              className="arrow-link mt-8 inline-block bg-bordeaux px-8 py-4 text-[0.75rem] uppercase tracking-[0.2em] text-white transition-colors hover:bg-bordeaux-soft"
+            >
+              {en ? "Register for a home search" : "Inscription relocation"} <span className="arrow ml-1">→</span>
+            </Link>
           </Reveal>
         </div>
       </section>

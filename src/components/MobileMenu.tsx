@@ -89,7 +89,7 @@ export function MobileMenu({
   );
 
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         onClick={() => setOpen(true)}
         aria-label="Ouvrir le menu"

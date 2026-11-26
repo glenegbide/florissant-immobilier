@@ -12,6 +12,7 @@ export function Header({ locale, t }: { locale: string; t: Dict }) {
     { href: localePath(locale, "sell"), label: t.nav.sell },
     { href: localePath(locale, "estimate"), label: t.nav.estimate },
     { href: localePath(locale, "relocation"), label: t.nav.relocation },
+    { href: localePath(locale, "inscription"), label: t.nav.inscription },
     { href: localePath(locale, "about"), label: t.nav.about },
   ];
 
@@ -21,7 +22,7 @@ export function Header({ locale, t }: { locale: string; t: Dict }) {
         <div className="flex h-20 items-center justify-between gap-6">
           <Wordmark locale={locale} />
 
-          <nav className="hidden lg:flex items-center gap-7 text-[0.9rem] text-ink">
+          <nav className="hidden xl:flex items-center gap-7 whitespace-nowrap text-[0.9rem] text-ink">
             {nav.map((item) => (
               <Link
                 key={item.href}

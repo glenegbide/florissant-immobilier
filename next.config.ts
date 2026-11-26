@@ -11,6 +11,7 @@ const enSlugs: Array<[en: string, fr: string]> = [
   ["about", "a-propos"],
   ["legal", "mentions-legales"],
   ["privacy", "confidentialite"],
+  ["registration", "inscription"],
 ];
 
 const nextConfig: NextConfig = {

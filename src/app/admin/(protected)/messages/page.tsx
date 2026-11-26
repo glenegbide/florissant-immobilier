@@ -77,6 +77,14 @@ export default async function MessagesPage() {
               </p>
 
               <div className="mt-5 flex items-center gap-5 text-xs">
+                {m.reference?.startsWith("FL-") && (m.type === "inscription" || m.type === "dossier") && (
+                  <a
+                    href={`/admin/dossiers/${m.reference}`}
+                    className="uppercase tracking-[0.15em] text-bordeaux hover:underline"
+                  >
+                    Dossier & documents
+                  </a>
+                )}
                 <a
                   href={`mailto:${m.email}?subject=${encodeURIComponent(
                     "Re: Florissant Immobilier"

@@ -49,3 +49,6 @@ next-env.d.ts
 /public/uploads
 !.env.example
 !.env.production.example
+
+# Client documents stored at runtime (never commit)
+/private

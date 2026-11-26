@@ -43,6 +43,8 @@ COPY docker-entrypoint.sh ./docker-entrypoint.sh
 
 # Persist uploaded property photos here (mounted as a volume in compose)
 RUN mkdir -p public/uploads && chown -R nextjs:nodejs public/uploads
+# Private client documents (mounted as a volume; served to the admin only)
+RUN mkdir -p private/dossiers && chown -R nextjs:nodejs private
 
 USER nextjs
 EXPOSE 3000
